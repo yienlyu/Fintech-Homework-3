@@ -74,6 +74,12 @@ class MyPortfolio:
         """
         TODO: Complete Task 4 Below
         """
+        for i in range(1, len(self.price)):
+            returns = self.price[assets].iloc[i] - self.price[assets].iloc[i-1]
+            curr_state = [1 if x > 0 else 0 for x in returns]
+            sum_state = sum(curr_state)
+            curr_state = [s / sum_state if sum_state != 0 else 0 for s in curr_state]
+            self.portfolio_weights.loc[self.price.index[i], assets] = curr_state
 
         """
         TODO: Complete Task 4 Above
